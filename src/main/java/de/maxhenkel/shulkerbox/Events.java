@@ -103,6 +103,10 @@ public class Events {
 		UpdateChecker checker = new UpdateChecker(new IUpdateCheckResult() {
 			@Override
 			public void onResult(boolean isAvailable, String updateURL) {
+				if(!isAvailable){
+					return;
+				}
+				
 				String msg = "[" + new TextComponentTranslation("message.name").getFormattedText()
 						+ "] " + new TextComponentTranslation("message.update").getFormattedText()
 						+ " ";
