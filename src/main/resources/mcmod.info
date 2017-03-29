@@ -6,7 +6,7 @@
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
-  "updateUrl": "http://minecraft.curseforge.com/projects/shulker-box-mod",
+  "updateUrl": "http://minecraft.curseforge.com/projects/advanced-shulkerboxes",
   "authorList": ["Max Henkel"],
   "credits": "",
   "logoFile": "",
