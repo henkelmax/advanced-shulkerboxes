@@ -1,0 +1,16 @@
+[
+{
+  "modid": "shulkerbox",
+  "name": "Shulkerbox",
+  "description": "Shulkerbox",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "http://minecraft.curseforge.com/projects/shulker-box-mod",
+  "authorList": ["Max Henkel"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
