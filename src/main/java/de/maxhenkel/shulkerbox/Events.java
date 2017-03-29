@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemShulkerBox;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -49,12 +50,26 @@ public class Events {
 		Item item = stack.getItem();
 		
 		if(!(item instanceof ItemShulkerBox)){
+			
+			if(event.getHand().equals(EnumHand.MAIN_HAND)){
+				return;
+			}
+			
+			if(event instanceof PlayerInteractEvent.RightClickBlock){
+				return;
+			}
+			
+			ItemStack st=player.getHeldItem(EnumHand.MAIN_HAND);
+			
+			if(st.getItem() instanceof ItemShulkerBox){
+				event.setCanceled(true);
+			}
 			return;
 		}
 		
 		if(event instanceof PlayerInteractEvent.RightClickItem){
 			displayGUI(player, stack);
-			//event.setCanceled(true);
+			event.setCanceled(true);
 		}else if(event instanceof PlayerInteractEvent.RightClickBlock){
 			if(onlySneakPlace){
 				if(!player.isSneaking()){
