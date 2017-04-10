@@ -62,19 +62,25 @@ public class Events {
 			ItemStack st=player.getHeldItem(EnumHand.MAIN_HAND);
 			
 			if(st.getItem() instanceof ItemShulkerBox){
-				event.setCanceled(true);
+				if(event.isCancelable()){
+					event.setCanceled(true);
+				}
 			}
 			return;
 		}
 		
 		if(event instanceof PlayerInteractEvent.RightClickItem){
 			displayGUI(player, stack);
-			event.setCanceled(true);
+			if(event.isCancelable()){
+				event.setCanceled(true);
+			}
 		}else if(event instanceof PlayerInteractEvent.RightClickBlock){
 			if(onlySneakPlace){
 				if(!player.isSneaking()){
 					displayGUI(player, stack);
-					event.setCanceled(true);
+					if(event.isCancelable()){
+						event.setCanceled(true);
+					}
 				}
 			}
 		}
