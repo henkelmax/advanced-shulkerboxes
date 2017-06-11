@@ -13,9 +13,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = Main.MODID, version = Main.VERSION)
 public class Main{
-	public static final String UPDATE_ADDRESS = "http://maxhenkel.de/update/shulkerbox_1.11.2.txt";
+	public static final String UPDATE_ADDRESS = "http://maxhenkel.de/update/shulkerbox_1.12.txt";
     public static final String MODID = "shulkerbox";
-    public static final String VERSION = "1.1.1";
+    public static final String VERSION = "1.2.0";
     public static final int VERSION_NUMBER = 2;
     
     private Config config;
