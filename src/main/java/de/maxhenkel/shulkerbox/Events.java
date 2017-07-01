@@ -1,6 +1,7 @@
 package de.maxhenkel.shulkerbox;
 
 import de.maxhenkel.shulkerbox.UpdateChecker.IUpdateCheckResult;
+import net.minecraft.block.BlockShulkerBox;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemShulkerBox;
@@ -15,6 +16,7 @@ import net.minecraft.util.text.event.ClickEvent.Action;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent.PlaceEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class Events {
@@ -24,7 +26,7 @@ public class Events {
 
 	private boolean checkUpdates;
 	private boolean updateShown;
-	
+
 	private boolean onlySneakPlace;
 
 	public Events() {
@@ -34,61 +36,67 @@ public class Events {
 	}
 
 	@SubscribeEvent
-	public void onRightClick(PlayerInteractEvent event) {
-		if(event.isCanceled()){
+	public void onRightClick(PlaceEvent event) {
+		if (event.isCanceled()) {
+			return;
+		}
+		
+		if(!(event.getPlacedBlock().getBlock() instanceof BlockShulkerBox)){
+			return;
+		}
+		
+		EntityPlayer player = event.getPlayer();
+
+		ItemStack stack=player.getHeldItem(event.getHand());
+
+		if (!isShulkerBox(stack)) {
+			return;
+		}
+		
+		if (onlySneakPlace) {
+			if (!player.isSneaking()) {
+				displayGUI(player, stack);
+				event.setCanceled(true);
+			}
+		}
+
+	}
+	
+	@SubscribeEvent
+	public void onRightClick(PlayerInteractEvent.RightClickItem event) {
+		if (event.isCanceled()) {
+			return;
+		}
+		
+		if (!isShulkerBox(event.getItemStack())) {
 			return;
 		}
 		
 		EntityPlayer player = event.getEntityPlayer();
 
-		ItemStack stack = event.getItemStack();
+		ItemStack stackMain = player.getHeldItem(EnumHand.MAIN_HAND);
 
+		if (isShulkerBox(stackMain)) {
+			displayGUI(player, stackMain);
+		}
+	}
+	
+	private boolean isShulkerBox(ItemStack stack) {
 		if (stack == null) {
-			return;
+			return false;
 		}
 
 		Item item = stack.getItem();
-		
-		if(!(item instanceof ItemShulkerBox)){
-			
-			if(event.getHand().equals(EnumHand.MAIN_HAND)){
-				return;
-			}
-			
-			if(event instanceof PlayerInteractEvent.RightClickBlock){
-				return;
-			}
-			
-			ItemStack st=player.getHeldItem(EnumHand.MAIN_HAND);
-			
-			if(st.getItem() instanceof ItemShulkerBox){
-				if(event.isCancelable()){
-					event.setCanceled(true);
-				}
-			}
-			return;
+
+		if (item instanceof ItemShulkerBox) {
+			return true;
 		}
-		
-		if(event instanceof PlayerInteractEvent.RightClickItem){
-			displayGUI(player, stack);
-			if(event.isCancelable()){
-				event.setCanceled(true);
-			}
-		}else if(event instanceof PlayerInteractEvent.RightClickBlock){
-			if(onlySneakPlace){
-				if(!player.isSneaking()){
-					displayGUI(player, stack);
-					if(event.isCancelable()){
-						event.setCanceled(true);
-					}
-				}
-			}
-		}
-		
+
+		return false;
 	}
-	
-	private void displayGUI(EntityPlayer player, ItemStack stack){
-		if(!player.world.isRemote){
+
+	private void displayGUI(EntityPlayer player, ItemStack stack) {
+		if (!player.world.isRemote) {
 			player.displayGUIChest(new InventoryShulkerBox(stack));
 		}
 	}
@@ -124,16 +132,14 @@ public class Events {
 		UpdateChecker checker = new UpdateChecker(new IUpdateCheckResult() {
 			@Override
 			public void onResult(boolean isAvailable, String updateURL) {
-				if(!isAvailable){
+				if (!isAvailable) {
 					return;
 				}
-				
-				String msg = "[" + new TextComponentTranslation("message.name").getFormattedText()
-						+ "] " + new TextComponentTranslation("message.update").getFormattedText()
-						+ " ";
 
-				ClickEvent openUrl = new ClickEvent(Action.OPEN_URL,
-						updateURL);
+				String msg = "[" + new TextComponentTranslation("message.name").getFormattedText() + "] "
+						+ new TextComponentTranslation("message.update").getFormattedText() + " ";
+
+				ClickEvent openUrl = new ClickEvent(Action.OPEN_URL, updateURL);
 				Style style = new Style();
 
 				style.setClickEvent(openUrl);
