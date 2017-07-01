@@ -15,8 +15,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class Main{
 	public static final String UPDATE_ADDRESS = "http://maxhenkel.de/update/shulkerbox_1.11.2.txt";
     public static final String MODID = "shulkerbox";
-    public static final String VERSION = "1.1.1";
-    public static final int VERSION_NUMBER = 2;
+    public static final String VERSION = "1.1.2";
+    public static final int VERSION_NUMBER = 4;
     
     private Config config;
     private Events events;
