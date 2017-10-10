@@ -17,15 +17,5 @@ public class ClientProxy extends CommonProxy{
 	public void postinit(FMLPostInitializationEvent event) {
 		super.postinit(event);
 	}
-	
-	/*private void addRenderItem(Item i){
-		String name=i.getUnlocalizedName().replace("item.", "");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(i, 0, new ModelResourceLocation(Main.MODID +":" +name, "inventory"));
-	}
-	
-	private void addRenderBlock(Block b){
-		String name=b.getUnlocalizedName().replace("tile.", "");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(b), 0, new ModelResourceLocation(Main.MODID +":" +name, "inventory"));
-	}*/
 
 }

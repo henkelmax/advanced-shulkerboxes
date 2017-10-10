@@ -11,12 +11,11 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = Main.MODID, version = Main.VERSION)
+@Mod(modid = Main.MODID, version = Main.VERSION, updateJSON=Main.UPDATE_JSON)
 public class Main{
-	public static final String UPDATE_ADDRESS = "http://maxhenkel.de/update/shulkerbox_1.12.txt";
+	public static final String UPDATE_JSON = "http://maxhenkel.de/update/shulkerbox.json";
     public static final String MODID = "shulkerbox";
-    public static final String VERSION = "1.2.1";
-    public static final int VERSION_NUMBER = 3;
+    public static final String VERSION = "1.3.0";
     
     private Config config;
     private Events events;

@@ -18,13 +18,4 @@ public class CommonProxy {
 
 	}
 
-	/*private void registerItem(Item i) {
-		GameRegistry.register(i);
-	}
-
-	private void registerBlock(Block b) {
-		GameRegistry.register(b);
-		GameRegistry.register(new ItemBlock(b).setRegistryName(b.getRegistryName()));
-	}*/
-
 }

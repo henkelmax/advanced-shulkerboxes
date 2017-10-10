@@ -1,12 +1,12 @@
 [
 {
   "modid": "shulkerbox",
-  "name": "Shulkerbox",
-  "description": "Shulkerbox",
+  "name": "Advanced Shulkerboxes",
+  "description": "Advanced Shulkerboxes",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "http://maxhenkel.de",
-  "updateUrl": "http://minecraft.curseforge.com/projects/advanced-shulkerboxes",
+  "url": "http://minecraft.curseforge.com/projects/advanced-shulkerboxes",
+  "updateUrl": "http://maxhenkel.de/update/shulkerbox.json",
   "authorList": ["Max Henkel"],
   "credits": "",
   "logoFile": "",
