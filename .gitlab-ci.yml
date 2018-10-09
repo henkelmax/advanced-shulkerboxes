@@ -10,7 +10,8 @@ cache:
 build:
   stage: build
   script:
-    - ./gradlew setupDecompWorkspace
+    - mkdir -p .gradle
+    - ./gradlew setupCiWorkspace
     - ./gradlew build
     - rm build/libs/*-sources.jar
     - BUILD_FILE=$(find build/libs/*.jar -printf "%f")
