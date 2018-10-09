@@ -6,12 +6,14 @@ stages:
 cache:
   paths:
     - ./.gradle/
+    - ./.gradle_user_home/
 
 build:
   stage: build
   script:
     - mkdir -p .gradle
-    - ./gradlew setupCiWorkspace
+    - mkdir -p .gradle_user_home
+    - ./gradlew setupCiWorkspace --gradle-user-home ./.gradle_user_home/
     - ./gradlew build
     - rm build/libs/*-sources.jar
     - BUILD_FILE=$(find build/libs/*.jar -printf "%f")
