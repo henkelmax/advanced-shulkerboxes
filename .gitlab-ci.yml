@@ -14,7 +14,7 @@ build:
     - mkdir -p .gradle
     - mkdir -p .gradle_user_home
     - ./gradlew setupCiWorkspace --gradle-user-home ./.gradle_user_home/
-    - ./gradlew build
+    - ./gradlew build --gradle-user-home ./.gradle_user_home/
     - rm build/libs/*-sources.jar
     - BUILD_FILE=$(find build/libs/*.jar -printf "%f")
     - BUILD_FILE_PATH=build/libs/${BUILD_FILE}
