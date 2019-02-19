@@ -1,27 +1,21 @@
 package de.maxhenkel.shulkerbox;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockShulkerBox;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemShulkerBox;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.world.BlockEvent.PlaceEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
+@Mod.EventBusSubscriber(modid = Main.MODID)
 public class Events {
 
-	public static final String KEY_ONLY_SNEAK_PLACE = "only_sneak_place";
-
-	private boolean onlySneakPlace;
-
-	public Events() {
-		this.onlySneakPlace = Main.getInstance().getConfig().getBoolean(KEY_ONLY_SNEAK_PLACE, true);
-	}
-
 	@SubscribeEvent
-	public void onRightClick(PlaceEvent event) {
+	public void onRightClick(BlockEvent.PlaceEvent event) {
 		if (event.isCanceled()) {
 			return;
 		}
@@ -38,7 +32,7 @@ public class Events {
 			return;
 		}
 		
-		if (onlySneakPlace) {
+		if (Config.onlySneakPlace) {
 			if (!player.isSneaking()) {
 				displayGUI(player, stack);
 				event.setCanceled(true);
@@ -73,7 +67,7 @@ public class Events {
 
 		Item item = stack.getItem();
 
-		if (item instanceof ItemShulkerBox) {
+		if (Block.getBlockFromItem(item) instanceof BlockShulkerBox) {
 			return true;
 		}
 

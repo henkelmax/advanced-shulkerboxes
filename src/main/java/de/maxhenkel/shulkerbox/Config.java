@@ -1,43 +1,52 @@
 package de.maxhenkel.shulkerbox;
 
-import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.ForgeConfigSpec;
+import org.apache.commons.lang3.tuple.Pair;
 
 public class Config {
 
-	private Configuration config;
+    public static final ServerConfig SERVER;
+    public static final ForgeConfigSpec SERVER_SPEC;
 
-	public Config(Configuration config) {
-		this.config = config;
-	}
+    public static final ClientConfig CLIENT;
+    public static final ForgeConfigSpec CLIENT_SPEC;
 
-	public String getString(String key, String def) {
-		String s = def;
-		try {
-			config.load();
-			s = config.get(Main.MODID, key, def).getString();
-			config.save();
-		} catch (Exception e) {}
-		return s;
-	}
-	
-	public boolean getBoolean(String key, boolean def) {
-		boolean s = def;
-		try {
-			config.load();
-			s = config.get(Main.MODID, key, def).getBoolean();
-			config.save();
-		} catch (Exception e) {}
-		return s;
-	}
-	
-	public String[] getStringArray(String key, String[] def) {
-		String[] s = def;
-		try {
-			config.load();
-			s = config.get(Main.MODID, key, def).getStringList();
-			config.save();
-		} catch (Exception e) {}
-		return s;
-	}
+    static {
+        Pair<ServerConfig, ForgeConfigSpec> specPairServer = new ForgeConfigSpec.Builder().configure(ServerConfig::new);
+        SERVER_SPEC = specPairServer.getRight();
+        SERVER = specPairServer.getLeft();
+
+        Pair<ClientConfig, ForgeConfigSpec> specPairClient = new ForgeConfigSpec.Builder().configure(ClientConfig::new);
+        CLIENT_SPEC = specPairClient.getRight();
+        CLIENT = specPairClient.getLeft();
+    }
+
+    public static boolean onlySneakPlace = true;
+
+    public static void loadServer() {
+        onlySneakPlace = SERVER.onlySneakPlace.get();
+    }
+
+    public static void loadClient() {
+
+    }
+
+    public static class ServerConfig {
+        public ForgeConfigSpec.BooleanValue onlySneakPlace;
+
+        public ServerConfig(ForgeConfigSpec.Builder builder) {
+            onlySneakPlace = builder
+                    .comment("If the shulkerbox should only be placed when sneaking")
+                    .translation("only_sneak_place")
+                    .define("only_sneak_place", true);
+        }
+    }
+
+    public static class ClientConfig {
+
+        public ClientConfig(ForgeConfigSpec.Builder builder) {
+
+        }
+    }
 
 }
