@@ -31,7 +31,7 @@ updateJSONURL="http://maxhenkel.de/update/shulkerbox.json" #optional
 description='''Open Shulkerboxes in your hand'''
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.gravestone]] #optional
+[[dependencies.shulkerbox]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified
@@ -43,7 +43,7 @@ description='''Open Shulkerboxes in your hand'''
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
 # Here's another dependency
-[[dependencies.gravestone]]
+[[dependencies.shulkerbox]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.13.2]"
