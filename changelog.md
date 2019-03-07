@@ -1,0 +1,1 @@
+- Fixed duping issue with auto placers

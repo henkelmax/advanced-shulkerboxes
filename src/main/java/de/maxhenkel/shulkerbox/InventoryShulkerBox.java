@@ -14,6 +14,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.IInteractionObject;
+
 import javax.annotation.Nullable;
 
 public class InventoryShulkerBox implements IInventory, IInteractionObject {
@@ -27,7 +28,7 @@ public class InventoryShulkerBox implements IInventory, IInteractionObject {
         this.shulkerBox = shulkerBox;
         this.invSize = 27;
         this.items = NonNullList.<ItemStack>withSize(getSizeInventory(), ItemStack.EMPTY);
-        
+
         NBTTagCompound c = shulkerBox.getTag();
 
         if (c == null) {
