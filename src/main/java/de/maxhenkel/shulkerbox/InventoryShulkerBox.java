@@ -12,10 +12,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.IInteractionObject;
+import net.minecraft.world.WorldServer;
+import net.minecraft.world.storage.loot.LootContext;
+import net.minecraft.world.storage.loot.LootTable;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class InventoryShulkerBox implements IInventory, IInteractionObject {
 
@@ -24,10 +29,14 @@ public class InventoryShulkerBox implements IInventory, IInteractionObject {
     private int invSize;
     private NBTTagCompound blockEntityTag;
 
-    public InventoryShulkerBox(ItemStack shulkerBox) {
+    private ResourceLocation lootTable;
+    private long lootTableSeed;
+
+
+    public InventoryShulkerBox(EntityPlayer player, ItemStack shulkerBox) {
         this.shulkerBox = shulkerBox;
         this.invSize = 27;
-        this.items = NonNullList.<ItemStack>withSize(getSizeInventory(), ItemStack.EMPTY);
+        this.items = NonNullList.withSize(getSizeInventory(), ItemStack.EMPTY);
 
         NBTTagCompound c = shulkerBox.getTag();
 
@@ -39,13 +48,42 @@ public class InventoryShulkerBox implements IInventory, IInteractionObject {
             return;
         }
 
-        this.blockEntityTag = c.getCompound("BlockEntityTag");
+        blockEntityTag = c.getCompound("BlockEntityTag");
 
         if (blockEntityTag.hasKey("Items")) {
             ItemStackHelper.loadAllItems(blockEntityTag, items);
+        } else if (blockEntityTag.hasKey("LootTable")) {
+            lootTable = new ResourceLocation(blockEntityTag.getString("LootTable"));
+            lootTableSeed = blockEntityTag.getLong("LootTableSeed");
+            fillWithLoot(player);
+            blockEntityTag.removeTag("LootTable");
+            blockEntityTag.removeTag("LootTableSeed");
         }
-
     }
+
+    public void fillWithLoot(@Nullable EntityPlayer player) {
+        if (lootTable != null) {
+            LootTable loottable = player.world.getServer().getLootTableManager().getLootTableFromLocation(lootTable);
+            lootTable = null;
+            Random random;
+
+            if (lootTableSeed == 0L) {
+                random = new Random();
+            } else {
+                random = new Random(lootTableSeed);
+            }
+
+            LootContext.Builder builder = new LootContext.Builder((WorldServer) player.world);
+
+            if (player != null) {
+                builder.withLuck(player.getLuck()).withPlayer(player);
+            }
+
+            loottable.fillInventory(this, random, builder.build());
+            markDirty();
+        }
+    }
+
 
     @Override
     public ITextComponent getName() {

@@ -85,7 +85,7 @@ public class Events {
 
     private void displayGUI(EntityPlayer player, ItemStack stack) {
         if (!player.world.isRemote) {
-            player.displayGUIChest(new InventoryShulkerBox(stack));
+            player.displayGUIChest(new InventoryShulkerBox(player, stack));
         }
     }
 
