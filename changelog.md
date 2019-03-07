@@ -1,1 +1,2 @@
 - Fixed duping issue with autoplacers
+- Added compatibility with loot tables
