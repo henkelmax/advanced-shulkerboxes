@@ -1,1 +1,1 @@
-- Added loot table compatibility
+- Updated to 1.14.2
