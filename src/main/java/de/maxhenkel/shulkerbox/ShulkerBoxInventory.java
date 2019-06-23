@@ -69,10 +69,10 @@ public class ShulkerBoxInventory implements IInventory{
             }
 
             if (player != null) {
-                builder.withLuck(player.getLuck()).withParameter(LootParameters.field_216281_a, player);
+                builder.withLuck(player.getLuck()).withParameter(LootParameters.THIS_ENTITY, player);
             }
 
-            loottable.func_216118_a(this, builder.build(LootParameterSets.field_216261_b));
+            loottable.fillInventory(this, builder.build(LootParameterSets.CHEST));
             markDirty();
         }
     }
