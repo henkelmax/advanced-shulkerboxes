@@ -17,13 +17,11 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ObjectHolder;
 
 @Mod(Main.MODID)
 public class Main {
     public static final String MODID = "shulkerbox";
 
-    @ObjectHolder(MODID + ":album_inventory")
     public static ContainerType SHULKERBOX_CONTAINER;
 
     public Main() {

@@ -51,7 +51,7 @@ public class Events {
         }
 
         if (Config.onlySneakPlace) {
-            if (!player.isSneaking()) {
+            if (!player.isCrouching()) {
                 displayGUI(player, stack);
                 event.setCanceled(true);
             }
@@ -65,7 +65,7 @@ public class Events {
             return;
         }
 
-        PlayerEntity player = event.getEntityPlayer();
+        PlayerEntity player = event.getPlayer();
 
         if (player instanceof FakePlayer) {
             return;
