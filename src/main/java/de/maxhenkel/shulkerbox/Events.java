@@ -51,7 +51,7 @@ public class Events {
         }
 
         if (Config.onlySneakPlace) {
-            if (!player.isCrouching()) {
+            if (!player.func_225608_bj_()) {
                 displayGUI(player, stack);
                 event.setCanceled(true);
             }
