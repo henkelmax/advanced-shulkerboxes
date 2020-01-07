@@ -1,1 +1,2 @@
-- Fixed sneak placing issue
+- Fixed client side shulkerbox placement
+- Added opening and closing sound

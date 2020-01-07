@@ -21,23 +21,12 @@ public class Config {
         CLIENT = specPairClient.getLeft();
     }
 
-    public static boolean onlySneakPlace = true;
-
-    public static void loadServer() {
-        onlySneakPlace = SERVER.onlySneakPlace.get();
-    }
-
-    public static void loadClient() {
-
-    }
-
     public static class ServerConfig {
         public ForgeConfigSpec.BooleanValue onlySneakPlace;
 
         public ServerConfig(ForgeConfigSpec.Builder builder) {
             onlySneakPlace = builder
                     .comment("If the shulkerbox should only be placed when sneaking")
-                    .translation("only_sneak_place")
                     .define("only_sneak_place", true);
         }
     }
