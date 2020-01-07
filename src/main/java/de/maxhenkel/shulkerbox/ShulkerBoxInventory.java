@@ -18,7 +18,7 @@ import net.minecraft.world.storage.loot.LootTable;
 
 import javax.annotation.Nullable;
 
-public class ShulkerBoxInventory implements IInventory{
+public class ShulkerBoxInventory implements IInventory {
 
     private NonNullList<ItemStack> items;
     private ItemStack shulkerBox;
@@ -69,10 +69,10 @@ public class ShulkerBoxInventory implements IInventory{
             }
 
             if (player != null) {
-                builder.withLuck(player.getLuck()).withParameter(LootParameters.THIS_ENTITY, player);
+                builder.withLuck(player.getLuck()).withParameter(LootParameters.THIS_ENTITY, player); // THIS_ENTITY
             }
 
-            loottable.fillInventory(this, builder.build(LootParameterSets.CHEST));
+            loottable.fillInventory(this, builder.build(LootParameterSets.CHEST)); // CHEST
             markDirty();
         }
     }
@@ -148,6 +148,9 @@ public class ShulkerBoxInventory implements IInventory{
 
     @Override
     public boolean isUsableByPlayer(PlayerEntity player) {
+        if (!Utils.isShulkerBox(shulkerBox)) {
+            return false;
+        }
         for (Hand hand : Hand.values()) {
             if (player.getHeldItem(hand).equals(shulkerBox)) {
                 return true;

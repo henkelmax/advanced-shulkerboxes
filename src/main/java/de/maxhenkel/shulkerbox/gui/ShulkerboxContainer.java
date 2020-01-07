@@ -1,8 +1,8 @@
 package de.maxhenkel.shulkerbox.gui;
 
-import de.maxhenkel.shulkerbox.Events;
 import de.maxhenkel.shulkerbox.Main;
 import de.maxhenkel.shulkerbox.ShulkerBoxInventory;
+import de.maxhenkel.shulkerbox.Utils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
@@ -26,7 +26,7 @@ public class ShulkerboxContainer extends ContainerBase {
     }
 
     public ShulkerboxContainer(int id, PlayerInventory playerInventory) {
-        this(id, playerInventory, new ShulkerBoxInventory(playerInventory.player, Events.getShulkerBox(playerInventory.player)));
+        this(id, playerInventory, new ShulkerBoxInventory(playerInventory.player, Utils.getShulkerBox(playerInventory.player)));
     }
 
     @Override

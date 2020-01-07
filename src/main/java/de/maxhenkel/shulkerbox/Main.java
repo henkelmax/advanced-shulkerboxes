@@ -17,18 +17,16 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ObjectHolder;
 
 @Mod(Main.MODID)
 public class Main {
+
     public static final String MODID = "shulkerbox";
 
-    @ObjectHolder(MODID + ":album_inventory")
     public static ContainerType SHULKERBOX_CONTAINER;
 
     public Main() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::configEvent);
         FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(ContainerType.class, this::registerContainers);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_SPEC);
@@ -37,15 +35,6 @@ public class Main {
         DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(Main.this::clientSetup);
         });
-    }
-
-    @SubscribeEvent
-    public void configEvent(ModConfig.ModConfigEvent event) {
-        if (event.getConfig().getType() == ModConfig.Type.SERVER) {
-            Config.loadServer();
-        } else if (event.getConfig().getType() == ModConfig.Type.CLIENT) {
-            Config.loadClient();
-        }
     }
 
     @SubscribeEvent
