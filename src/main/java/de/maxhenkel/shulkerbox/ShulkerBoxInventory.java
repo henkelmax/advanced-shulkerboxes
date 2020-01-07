@@ -148,6 +148,9 @@ public class ShulkerBoxInventory implements IInventory {
 
     @Override
     public boolean isUsableByPlayer(PlayerEntity player) {
+        if (!Utils.isShulkerBox(shulkerBox)) {
+            return false;
+        }
         for (Hand hand : Hand.values()) {
             if (player.getHeldItem(hand).equals(shulkerBox)) {
                 return true;

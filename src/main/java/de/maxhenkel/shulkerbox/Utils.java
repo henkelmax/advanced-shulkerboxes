@@ -12,7 +12,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
@@ -39,7 +38,7 @@ public class Utils {
         return null;
     }
 
-    private static boolean isShulkerBox(ItemStack stack) {
+    public static boolean isShulkerBox(ItemStack stack) {
         if (stack == null) {
             return false;
         }

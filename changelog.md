@@ -1,1 +1,1 @@
-- Fixed renamed shulkerboxes not showing name in GUI
+- Fixed duplication bug
