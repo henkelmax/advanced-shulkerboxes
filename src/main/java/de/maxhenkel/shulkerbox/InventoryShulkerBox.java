@@ -201,6 +201,9 @@ public class InventoryShulkerBox implements IInventory, IInteractionObject {
 
     @Override
     public boolean isUsableByPlayer(EntityPlayer player) {
+        if (shulkerBox.isEmpty()) {
+            return false;
+        }
         for (EnumHand hand : EnumHand.values()) {
             if (player.getHeldItem(hand).equals(shulkerBox)) {
                 return true;

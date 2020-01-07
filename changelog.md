@@ -1,1 +1,1 @@
-- Added loot table compatibility
+- Fixed duplication bug
