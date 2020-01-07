@@ -64,7 +64,7 @@ public class Utils {
 
                 @Override
                 public ITextComponent getDisplayName() {
-                    return new TranslationTextComponent(stack.getTranslationKey());
+                    return stack.getDisplayName();
                 }
             });
         }

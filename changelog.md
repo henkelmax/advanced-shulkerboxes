@@ -1,2 +1,1 @@
-- Fixed client side shulkerbox placement
-- Added opening and closing sound
+- Fixed renamed shulkerboxes not showing name in GUI
