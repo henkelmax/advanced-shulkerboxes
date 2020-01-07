@@ -113,10 +113,7 @@ public class InventoryShulkerBox implements IInventory, IInteractionObject {
 
     @Override
     public ITextComponent getDisplayName() {
-        // return new TextComponentTranslation(shulkerBox.getUnlocalizedName(),
-        // new Object[0]);
-        return (ITextComponent) (this.hasCustomName() ? new TextComponentString(this.getName())
-                : new TextComponentTranslation(this.getName(), new Object[0]));
+        return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName(), new Object[0]);
     }
 
     @Override
@@ -132,11 +129,7 @@ public class InventoryShulkerBox implements IInventory, IInteractionObject {
     @Override
     public ItemStack decrStackSize(int index, int count) {
         ItemStack itemstack = ItemStackHelper.getAndSplit(items, index, count);
-
-        // if (!itemstack.func_190926_b()) {
-        this.markDirty();
-        // }
-
+        markDirty();
         return itemstack;
     }
 
@@ -148,12 +141,7 @@ public class InventoryShulkerBox implements IInventory, IInteractionObject {
     @Override
     public void setInventorySlotContents(int index, ItemStack stack) {
         items.set(index, stack);
-
-		/*if (stack.getMaxStackSize() > this.getInventoryStackLimit()) {
-			stack.shrink(this.getInventoryStackLimit());//Falsch?
-		}*/
-
-        this.markDirty();
+        markDirty();
     }
 
     @Override
@@ -241,7 +229,9 @@ public class InventoryShulkerBox implements IInventory, IInteractionObject {
 
     @Override
     public boolean isUsableByPlayer(EntityPlayer player) {
-        // change evtl
+        if (shulkerBox.isEmpty()) {
+            return false;
+        }
         for (EnumHand hand : EnumHand.values()) {
             if (player.getHeldItem(hand).equals(shulkerBox)) {
                 return true;
