@@ -43,7 +43,7 @@ public class Events {
         }
 
         if (Config.SERVER.onlySneakPlace.get()) {
-            if (!player.func_225608_bj_()) {
+            if (!player.isShiftKeyDown()) {
                 Utils.openShulkerBox(player, stack);
                 event.setCanceled(true);
             }
@@ -114,7 +114,7 @@ public class Events {
     public void openShulkerBox(PlayerContainerEvent.Open event) {
         if (event.getContainer() instanceof ShulkerboxContainer) {
             PlayerEntity player = event.getPlayer();
-            player.world.playSound(null, player.func_226277_ct_(), player.func_226278_cu_(), player.func_226281_cx_(), SoundEvents.BLOCK_SHULKER_BOX_OPEN, SoundCategory.BLOCKS, 0.5F, player.world.rand.nextFloat() * 0.1F + 0.9F);
+            player.world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.BLOCK_SHULKER_BOX_OPEN, SoundCategory.BLOCKS, 0.5F, player.world.rand.nextFloat() * 0.1F + 0.9F);
         }
     }
 
@@ -122,7 +122,7 @@ public class Events {
     public void closeShulkerBox(PlayerContainerEvent.Close event) {
         if (event.getContainer() instanceof ShulkerboxContainer) {
             PlayerEntity player = event.getPlayer();
-            player.world.playSound(null, player.func_226277_ct_(), player.func_226278_cu_(), player.func_226281_cx_(), SoundEvents.BLOCK_SHULKER_BOX_CLOSE, SoundCategory.BLOCKS, 0.5F, player.world.rand.nextFloat() * 0.1F + 0.9F);
+            player.world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.BLOCK_SHULKER_BOX_CLOSE, SoundCategory.BLOCKS, 0.5F, player.world.rand.nextFloat() * 0.1F + 0.9F);
         }
     }
 
