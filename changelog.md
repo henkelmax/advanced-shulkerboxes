@@ -1,1 +1,2 @@
-- Updated forge and mcp mappings
+- Updated forge version
+- Updated MCP mappings

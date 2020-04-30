@@ -43,7 +43,7 @@ public class Events {
         }
 
         if (Config.SERVER.onlySneakPlace.get()) {
-            if (!player.isShiftKeyDown()) {
+            if (!player.isSneaking()) {
                 Utils.openShulkerBox(player, stack);
                 event.setCanceled(true);
             }
