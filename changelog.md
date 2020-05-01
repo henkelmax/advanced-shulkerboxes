@@ -1,2 +1,2 @@
-- Updated forge version
-- Updated MCP mappings
+- Added config option for other types of shulkerboxes
+- Fixed shulkerbox getting placed for a short amount of time
