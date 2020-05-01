@@ -2,13 +2,11 @@ buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
         maven { url = 'https://maven.maxhenkel.de/repository/public' }
-        maven { url = 'https://dist.creeper.host/Sponge/maven' }
         jcenter()
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
-        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
         classpath group: 'de.maxhenkel.forge-update', name: 'forge-update', version: '1.0.2'
     }
 }
@@ -19,7 +17,6 @@ plugins {
 }
 
 apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'forge-update'
 
 version = mod_version
@@ -51,7 +48,6 @@ minecraft {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${mod_minecraft_version}-${forge_version}"
-    compile 'org.spongepowered:mixin:0.8.1-SNAPSHOT'
 }
 
 jar {
@@ -62,8 +58,7 @@ jar {
                     "Implementation-Title"    : mod_name,
                     "Implementation-Version"  : mod_version,
                     "Implementation-Vendor"   : mod_vendor,
-                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                    "MixinConnector"          : "de.maxhenkel.shulkerbox.MixinConnector"])
+                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
     }
 }
 
@@ -79,14 +74,6 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude '**/*.toml'
     }
-}
-
-repositories {
-    maven { url = 'https://dist.creeper.host/Sponge/maven' }
-}
-
-mixin {
-    add sourceSets.main, "shulkerbox.refmap.json"
 }
 
 curseforge {
@@ -135,8 +122,7 @@ task deobfJar(type: Jar) {
                     "Implementation-Title"    : mod_name,
                     "Implementation-Version"  : mod_version,
                     "Implementation-Vendor"   : mod_vendor,
-                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                    "MixinConnector"          : "de.maxhenkel.shulkerbox.MixinConnector"])
+                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
     }
 }
 

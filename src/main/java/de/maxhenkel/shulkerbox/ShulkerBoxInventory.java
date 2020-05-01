@@ -7,7 +7,9 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.*;
+import net.minecraft.util.Hand;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.storage.loot.LootParameterSets;
@@ -67,10 +69,10 @@ public class ShulkerBoxInventory implements IInventory {
             }
 
             if (player != null) {
-                builder.withLuck(player.getLuck()).withParameter(LootParameters.THIS_ENTITY, player);
+                builder.withLuck(player.getLuck()).withParameter(LootParameters.THIS_ENTITY, player); // THIS_ENTITY
             }
 
-            loottable.fillInventory(this, builder.build(LootParameterSets.CHEST));
+            loottable.fillInventory(this, builder.build(LootParameterSets.CHEST)); // CHEST
             markDirty();
         }
     }
@@ -120,12 +122,17 @@ public class ShulkerBoxInventory implements IInventory {
 
     @Override
     public void openInventory(PlayerEntity player) {
-        player.world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.BLOCK_SHULKER_BOX_OPEN, SoundCategory.BLOCKS, 0.5F, player.world.rand.nextFloat() * 0.1F + 0.9F);
+
     }
 
     @Override
     public void closeInventory(PlayerEntity player) {
-        player.world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.BLOCK_SHULKER_BOX_CLOSE, SoundCategory.BLOCKS, 0.5F, player.world.rand.nextFloat() * 0.1F + 0.9F);
+
+    }
+
+    @Override
+    public boolean isItemValidForSlot(int index, ItemStack stack) {
+        return !(Block.getBlockFromItem(stack.getItem()) instanceof ShulkerBoxBlock);
     }
 
     @Override
@@ -141,7 +148,7 @@ public class ShulkerBoxInventory implements IInventory {
 
     @Override
     public boolean isUsableByPlayer(PlayerEntity player) {
-        if (!Utils.isOpenableShulkerBox(shulkerBox)) {
+        if (!Utils.isShulkerBox(shulkerBox)) {
             return false;
         }
         for (Hand hand : Hand.values()) {
