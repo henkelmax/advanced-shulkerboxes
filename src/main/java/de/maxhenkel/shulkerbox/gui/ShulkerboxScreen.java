@@ -1,5 +1,6 @@
 package de.maxhenkel.shulkerbox.gui;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -19,10 +20,8 @@ public class ShulkerboxScreen extends ScreenBase<ShulkerboxContainer> {
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(int x, int y) {
-        super.drawGuiContainerForegroundLayer(x, y);
-
-        font.drawString(getTitle().getFormattedText(), 8.0F, 6.0F, FONT_COLOR);
-        font.drawString(playerInventory.getDisplayName().getFormattedText(), 8.0F, (float) (ySize - 96 + 3), FONT_COLOR);
+    protected void func_230451_b_(MatrixStack matrixStack, int x, int y) {
+        field_230712_o_.func_238421_b_(matrixStack, func_231171_q_().getString(), 8F, 6F, FONT_COLOR);
+        field_230712_o_.func_238421_b_(matrixStack, playerInventory.getDisplayName().getString(), 8F, (float) (ySize - 96 + 4), FONT_COLOR);
     }
 }

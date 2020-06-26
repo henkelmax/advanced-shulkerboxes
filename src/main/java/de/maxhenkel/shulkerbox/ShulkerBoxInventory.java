@@ -6,15 +6,15 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootContext;
+import net.minecraft.loot.LootParameterSets;
+import net.minecraft.loot.LootParameters;
+import net.minecraft.loot.LootTable;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Hand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraft.world.storage.loot.LootContext;
-import net.minecraft.world.storage.loot.LootParameterSets;
-import net.minecraft.world.storage.loot.LootParameters;
-import net.minecraft.world.storage.loot.LootTable;
 
 import javax.annotation.Nullable;
 
@@ -69,10 +69,10 @@ public class ShulkerBoxInventory implements IInventory {
             }
 
             if (player != null) {
-                builder.withLuck(player.getLuck()).withParameter(LootParameters.THIS_ENTITY, player); // THIS_ENTITY
+                builder.withLuck(player.getLuck()).withParameter(LootParameters.THIS_ENTITY, player);
             }
 
-            loottable.fillInventory(this, builder.build(LootParameterSets.CHEST)); // CHEST
+            loottable.fillInventory(this, builder.build(LootParameterSets.CHEST));
             markDirty();
         }
     }
