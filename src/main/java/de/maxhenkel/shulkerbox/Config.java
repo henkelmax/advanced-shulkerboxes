@@ -26,7 +26,7 @@ public class Config {
 
         public ServerConfig(ForgeConfigSpec.Builder builder) {
             onlySneakPlace = builder
-                    .comment("If the shulkerbox should only be placed when sneaking")
+                    .comment("If the Shulker Box should only be placed when sneaking")
                     .define("only_sneak_place", true);
         }
     }
