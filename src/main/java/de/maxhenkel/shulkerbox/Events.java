@@ -5,10 +5,7 @@ import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
 import net.minecraftforge.common.util.FakePlayer;
-import net.minecraftforge.event.entity.player.PlayerContainerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -42,7 +39,7 @@ public class Events {
             return;
         }
 
-        if (Config.SERVER.onlySneakPlace.get()) {
+        if (Main.SERVER_CONFIG.onlySneakPlace.get()) {
             if (!player.isSneaking()) {
                 Utils.openShulkerBox(player, stack);
                 event.setCanceled(true);
@@ -107,22 +104,6 @@ public class Events {
         ItemStack stack = Utils.getShulkerBox(player, hand);
         if (stack != null) {
             Utils.openShulkerBox(player, stack);
-        }
-    }
-
-    @SubscribeEvent
-    public void openShulkerBox(PlayerContainerEvent.Open event) {
-        if (event.getContainer() instanceof ShulkerboxContainer) {
-            PlayerEntity player = event.getPlayer();
-            player.world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.BLOCK_SHULKER_BOX_OPEN, SoundCategory.BLOCKS, 0.5F, player.world.rand.nextFloat() * 0.1F + 0.9F);
-        }
-    }
-
-    @SubscribeEvent
-    public void closeShulkerBox(PlayerContainerEvent.Close event) {
-        if (event.getContainer() instanceof ShulkerboxContainer) {
-            PlayerEntity player = event.getPlayer();
-            player.world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.BLOCK_SHULKER_BOX_CLOSE, SoundCategory.BLOCKS, 0.5F, player.world.rand.nextFloat() * 0.1F + 0.9F);
         }
     }
 

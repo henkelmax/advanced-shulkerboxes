@@ -14,8 +14,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-import javax.annotation.Nullable;
-
 public class Utils {
 
     public static ItemStack getShulkerBox(PlayerEntity player, Hand hand) {
@@ -55,10 +53,9 @@ public class Utils {
     public static void openShulkerBox(PlayerEntity player, ItemStack stack) {
         if (!player.world.isRemote && player instanceof ServerPlayerEntity) {
             NetworkHooks.openGui((ServerPlayerEntity) player, new INamedContainerProvider() {
-                @Nullable
                 @Override
                 public Container createMenu(int id, PlayerInventory playerInventory, PlayerEntity playerEntity) {
-                    return new ShulkerboxContainer(id, playerInventory, new ShulkerBoxInventory(player, stack));
+                    return new ShulkerboxContainer(id, playerInventory, new AdvancedShulkerBoxInventory(player, stack));
                 }
 
                 @Override

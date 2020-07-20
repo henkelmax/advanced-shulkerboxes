@@ -1,1 +1,1 @@
-- Fixed typo in config
+- Fixed held shulker box slot not locked
