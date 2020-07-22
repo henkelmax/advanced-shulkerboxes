@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="${mod_forge_version}"
+loaderVersion="${mod_loader_version}"
 issueTrackerURL="https://minecraft.curseforge.com/projects/advanced-shulkerboxes/issues"
 displayURL="http://minecraft.curseforge.com/projects/advanced-shulkerboxes"
 # logoFile="shulkerbox.png"

@@ -1,1 +1,1 @@
-- Fixed held shulker box slot not locked
+- Added shulkerbox item mixins
