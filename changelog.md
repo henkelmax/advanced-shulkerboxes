@@ -1,1 +1,1 @@
-- Added shulkerbox item mixins
+- Updated to 1.16.2
