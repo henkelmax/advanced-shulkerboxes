@@ -1,1 +1,1 @@
-- Updated pack format
+- Fixed item duplication glitch

@@ -37,10 +37,6 @@ public class Events {
 
     @SubscribeEvent
     public void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-        if (event.isCanceled()) {
-            return;
-        }
-
         PlayerEntity player = event.getPlayer();
         Hand hand = event.getHand();
 
