@@ -1,1 +1,1 @@
-- Added shulkerbox item mixins
+- Fixed item duplication glitch
