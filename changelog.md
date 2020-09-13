@@ -1,1 +1,1 @@
-- Fixed item duplication glitch
+- Updated to 1.16.3
