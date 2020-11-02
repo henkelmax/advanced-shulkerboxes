@@ -21,9 +21,9 @@ public class ShulkerboxScreen extends ScreenBase<ShulkerboxContainer> {
     }
 
     @Override
-    protected void func_230451_b_(MatrixStack matrixStack, int x, int y) {
-        field_230712_o_.func_238421_b_(matrixStack, func_231171_q_().getString(), 8F, 6F, FONT_COLOR);
-        field_230712_o_.func_238421_b_(matrixStack, playerInventory.getDisplayName().getString(), 8F, (float) (ySize - 96 + 4), FONT_COLOR);
+    protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int x, int y) {
+        font.func_243248_b(matrixStack, getTitle(), 8F, 6F, FONT_COLOR);
+        font.func_243248_b(matrixStack, playerInventory.getDisplayName(), 8F, (float) (ySize - 96 + 4), FONT_COLOR);
     }
 
 }
