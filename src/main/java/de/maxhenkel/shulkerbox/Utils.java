@@ -17,7 +17,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 public class Utils {
 
     public static ItemStack getShulkerBox(PlayerEntity player, Hand hand) {
-        ItemStack stack = player.getHeldItem(hand);
+        ItemStack stack = player.getItemInHand(hand);
         if (isShulkerBox(stack)) {
             return stack;
         }
@@ -25,11 +25,11 @@ public class Utils {
     }
 
     public static ItemStack getShulkerBox(PlayerEntity player) {
-        ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
+        ItemStack stack = player.getItemInHand(Hand.MAIN_HAND);
         if (isShulkerBox(stack)) {
             return stack;
         }
-        stack = player.getHeldItem(Hand.OFF_HAND);
+        stack = player.getItemInHand(Hand.OFF_HAND);
         if (isShulkerBox(stack)) {
             return stack;
         }
@@ -43,7 +43,7 @@ public class Utils {
 
         Item item = stack.getItem();
 
-        if (Block.getBlockFromItem(item) instanceof ShulkerBoxBlock) {
+        if (Block.byItem(item) instanceof ShulkerBoxBlock) {
             return true;
         }
 
@@ -51,7 +51,7 @@ public class Utils {
     }
 
     public static void openShulkerBox(PlayerEntity player, ItemStack stack) {
-        if (!player.world.isRemote && player instanceof ServerPlayerEntity) {
+        if (!player.level.isClientSide && player instanceof ServerPlayerEntity) {
             NetworkHooks.openGui((ServerPlayerEntity) player, new INamedContainerProvider() {
                 @Override
                 public Container createMenu(int id, PlayerInventory playerInventory, PlayerEntity playerEntity) {
@@ -60,7 +60,7 @@ public class Utils {
 
                 @Override
                 public ITextComponent getDisplayName() {
-                    return stack.getDisplayName();
+                    return stack.getHoverName();
                 }
             });
         }

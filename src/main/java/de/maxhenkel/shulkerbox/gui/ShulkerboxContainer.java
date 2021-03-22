@@ -47,9 +47,9 @@ public class ShulkerboxContainer extends ContainerBase {
     }
 
     public static int getLockedSlot(PlayerEntity player) {
-        ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
+        ItemStack stack = player.getItemInHand(Hand.MAIN_HAND);
         if (Utils.isShulkerBox(stack)) {
-            return player.inventory.currentItem;
+            return player.inventory.selected;
         }
         return -1;
     }

@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BlockItem.class)
 public abstract class ItemMixin {
 
-    @Inject(method = "onItemUse", at = @At("HEAD"), cancellable = true)
-    public void onItemUse(ItemUseContext context, CallbackInfoReturnable<ActionResultType> cir) {
+    @Inject(method = "useOn", at = @At("HEAD"), cancellable = true)
+    public void useOn(ItemUseContext context, CallbackInfoReturnable<ActionResultType> cir) {
         Events.onPlaceBlock(context, cir);
     }
 

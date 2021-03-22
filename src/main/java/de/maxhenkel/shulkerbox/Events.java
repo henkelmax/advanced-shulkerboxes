@@ -28,7 +28,7 @@ public class Events {
         }
 
         if (Main.SERVER_CONFIG.onlySneakPlace.get()) {
-            if (!player.isSneaking()) {
+            if (!player.isShiftKeyDown()) {
                 Utils.openShulkerBox(player, stack);
                 cir.setReturnValue(ActionResultType.SUCCESS);
             }
@@ -49,7 +49,7 @@ public class Events {
             return;
         }
 
-        if (player.openContainer instanceof ShulkerboxContainer) {
+        if (player.containerMenu instanceof ShulkerboxContainer) {
             return;
         }
 

@@ -16,14 +16,14 @@ public class ShulkerboxScreen extends ScreenBase<ShulkerboxContainer> {
         super(DEFAULT_IMAGE, shulkerboxContainer, playerInventory, name);
 
         this.playerInventory = playerInventory;
-        xSize = 176;
-        ySize = 166;
+        imageWidth = 176;
+        imageHeight = 166;
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int x, int y) {
-        font.func_243248_b(matrixStack, getTitle(), 8F, 6F, FONT_COLOR);
-        font.func_243248_b(matrixStack, playerInventory.getDisplayName(), 8F, (float) (ySize - 96 + 4), FONT_COLOR);
+    protected void renderLabels(MatrixStack matrixStack, int x, int y) {
+        font.draw(matrixStack, getTitle(), 8F, 6F, FONT_COLOR);
+        font.draw(matrixStack, playerInventory.getDisplayName(), 8F, (float) (imageHeight - 96 + 4), FONT_COLOR);
     }
 
 }
