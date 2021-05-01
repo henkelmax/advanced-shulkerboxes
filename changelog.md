@@ -1,1 +1,1 @@
-- Fixed mixins not working
+- Fixed mixin connector
