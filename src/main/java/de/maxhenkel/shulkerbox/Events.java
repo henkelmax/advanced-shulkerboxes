@@ -1,11 +1,11 @@
 package de.maxhenkel.shulkerbox;
 
 import de.maxhenkel.shulkerbox.gui.ShulkerboxContainer;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,8 +15,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mod.EventBusSubscriber(modid = Main.MODID)
 public class Events {
 
-    public static void onPlaceBlock(ItemUseContext context, CallbackInfoReturnable<ActionResultType> cir) {
-        PlayerEntity player = context.getPlayer();
+    public static void onPlaceBlock(UseOnContext context, CallbackInfoReturnable<InteractionResult> cir) {
+        Player player = context.getPlayer();
 
         if (player instanceof FakePlayer) {
             return;
@@ -30,21 +30,21 @@ public class Events {
         if (Main.SERVER_CONFIG.onlySneakPlace.get()) {
             if (!player.isShiftKeyDown()) {
                 Utils.openShulkerBox(player, stack);
-                cir.setReturnValue(ActionResultType.SUCCESS);
+                cir.setReturnValue(InteractionResult.SUCCESS);
             }
         }
     }
 
     @SubscribeEvent
     public void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-        PlayerEntity player = event.getPlayer();
-        Hand hand = event.getHand();
+        Player player = event.getPlayer();
+        InteractionHand hand = event.getHand();
 
         if (player instanceof FakePlayer) {
             return;
         }
 
-        if (hand.equals(Hand.OFF_HAND) && Utils.getShulkerBox(player, Hand.MAIN_HAND) != null) {
+        if (hand.equals(InteractionHand.OFF_HAND) && Utils.getShulkerBox(player, InteractionHand.MAIN_HAND) != null) {
             event.setCanceled(true);
             return;
         }

@@ -5,17 +5,17 @@ import de.maxhenkel.corelib.inventory.LockedSlot;
 import de.maxhenkel.shulkerbox.AdvancedShulkerBoxInventory;
 import de.maxhenkel.shulkerbox.Main;
 import de.maxhenkel.shulkerbox.Utils;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.container.ShulkerBoxSlot;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
+import net.minecraft.world.Container;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ShulkerBoxSlot;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 
 public class ShulkerboxContainer extends ContainerBase {
 
-    public ShulkerboxContainer(int id, PlayerInventory playerInventory, IInventory shulkerboxInventory) {
+    public ShulkerboxContainer(int id, Inventory playerInventory, Container shulkerboxInventory) {
         super(Main.SHULKERBOX_CONTAINER, id, playerInventory, shulkerboxInventory);
 
         for (int y = 0; y < 3; y++) {
@@ -42,14 +42,14 @@ public class ShulkerboxContainer extends ContainerBase {
         }
     }
 
-    public ShulkerboxContainer(int id, PlayerInventory playerInventory) {
+    public ShulkerboxContainer(int id, Inventory playerInventory) {
         this(id, playerInventory, new AdvancedShulkerBoxInventory(playerInventory.player, Utils.getShulkerBox(playerInventory.player)));
     }
 
-    public static int getLockedSlot(PlayerEntity player) {
-        ItemStack stack = player.getItemInHand(Hand.MAIN_HAND);
+    public static int getLockedSlot(Player player) {
+        ItemStack stack = player.getItemInHand(InteractionHand.MAIN_HAND);
         if (Utils.isShulkerBox(stack)) {
-            return player.inventory.selected;
+            return player.getInventory().selected;
         }
         return -1;
     }

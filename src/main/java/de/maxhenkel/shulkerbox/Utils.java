@@ -1,22 +1,22 @@
 package de.maxhenkel.shulkerbox;
 
 import de.maxhenkel.shulkerbox.gui.ShulkerboxContainer;
-import net.minecraft.block.Block;
-import net.minecraft.block.ShulkerBoxBlock;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ShulkerBoxBlock;
+import net.minecraftforge.fmllegacy.network.NetworkHooks;
 
 public class Utils {
 
-    public static ItemStack getShulkerBox(PlayerEntity player, Hand hand) {
+    public static ItemStack getShulkerBox(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (isShulkerBox(stack)) {
             return stack;
@@ -24,12 +24,12 @@ public class Utils {
         return null;
     }
 
-    public static ItemStack getShulkerBox(PlayerEntity player) {
-        ItemStack stack = player.getItemInHand(Hand.MAIN_HAND);
+    public static ItemStack getShulkerBox(Player player) {
+        ItemStack stack = player.getItemInHand(InteractionHand.MAIN_HAND);
         if (isShulkerBox(stack)) {
             return stack;
         }
-        stack = player.getItemInHand(Hand.OFF_HAND);
+        stack = player.getItemInHand(InteractionHand.OFF_HAND);
         if (isShulkerBox(stack)) {
             return stack;
         }
@@ -50,16 +50,16 @@ public class Utils {
         return false;
     }
 
-    public static void openShulkerBox(PlayerEntity player, ItemStack stack) {
-        if (!player.level.isClientSide && player instanceof ServerPlayerEntity) {
-            NetworkHooks.openGui((ServerPlayerEntity) player, new INamedContainerProvider() {
+    public static void openShulkerBox(Player player, ItemStack stack) {
+        if (!player.level.isClientSide && player instanceof ServerPlayer) {
+            NetworkHooks.openGui((ServerPlayer) player, new MenuProvider() {
                 @Override
-                public Container createMenu(int id, PlayerInventory playerInventory, PlayerEntity playerEntity) {
+                public AbstractContainerMenu createMenu(int id, Inventory playerInventory, Player playerEntity) {
                     return new ShulkerboxContainer(id, playerInventory, new AdvancedShulkerBoxInventory(player, stack));
                 }
 
                 @Override
-                public ITextComponent getDisplayName() {
+                public Component getDisplayName() {
                     return stack.getHoverName();
                 }
             });
