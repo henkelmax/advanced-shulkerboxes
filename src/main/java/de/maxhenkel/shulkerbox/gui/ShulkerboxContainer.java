@@ -16,7 +16,7 @@ import net.minecraft.world.item.ItemStack;
 public class ShulkerboxContainer extends ContainerBase {
 
     public ShulkerboxContainer(int id, Inventory playerInventory, Container shulkerboxInventory) {
-        super(Main.SHULKERBOX_CONTAINER, id, playerInventory, shulkerboxInventory);
+        super(Main.SHULKERBOX_CONTAINER.get(), id, playerInventory, shulkerboxInventory);
 
         for (int y = 0; y < 3; y++) {
             for (int x = 0; x < 9; x++) {
