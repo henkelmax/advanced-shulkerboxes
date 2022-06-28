@@ -1,5 +1,6 @@
-# Advanced Shulkerboxes ![](http://cf.way2muchnoise.eu/full_253861_downloads.svg)
-![](http://cf.way2muchnoise.eu/versions/253861.svg)
+<!-- modrinth_exclude.start -->
+
+# Advanced Shulkerboxes ![](http://cf.way2muchnoise.eu/full_253861_downloads.svg) ![](http://cf.way2muchnoise.eu/versions/253861.svg)
 
 ## Links
 - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/advanced-shulkerboxes)
@@ -9,6 +10,8 @@
 - [Credits](https://modrepo.de/minecraft/shulkerbox/credits)
 
 ---
+
+<!-- modrinth_exclude.end -->
 
 This mod lets you open your Shulker Boxes from your inventory.
 
