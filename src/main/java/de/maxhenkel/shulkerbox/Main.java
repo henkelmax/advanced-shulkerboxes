@@ -25,7 +25,7 @@ public class Main {
 
     public static final String MODID = "shulkerbox";
 
-    private static final DeferredRegister<MenuType<?>> MENU_TYPE_REGISTER = DeferredRegister.create(ForgeRegistries.CONTAINERS, Main.MODID);
+    private static final DeferredRegister<MenuType<?>> MENU_TYPE_REGISTER = DeferredRegister.create(ForgeRegistries.MENU_TYPES, Main.MODID);
 
     public static final RegistryObject<MenuType<ShulkerboxContainer>> SHULKERBOX_CONTAINER = MENU_TYPE_REGISTER.register("shulkerbox", () ->
             IForgeMenuType.create((windowId, inv, data) -> new ShulkerboxContainer(windowId, inv))

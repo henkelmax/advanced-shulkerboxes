@@ -37,7 +37,7 @@ public class Events {
 
     @SubscribeEvent
     public void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-        Player player = event.getPlayer();
+        Player player = event.getEntity();
         InteractionHand hand = event.getHand();
 
         if (player instanceof FakePlayer) {

@@ -52,7 +52,7 @@ public class Utils {
 
     public static void openShulkerBox(Player player, ItemStack stack) {
         if (!player.level.isClientSide && player instanceof ServerPlayer) {
-            NetworkHooks.openGui((ServerPlayer) player, new MenuProvider() {
+            NetworkHooks.openScreen((ServerPlayer) player, new MenuProvider() {
                 @Override
                 public AbstractContainerMenu createMenu(int id, Inventory playerInventory, Player playerEntity) {
                     return new ShulkerboxContainer(id, playerInventory, new AdvancedShulkerBoxInventory(player, stack));
