@@ -4,9 +4,6 @@
 
 ## Links
 - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/advanced-shulkerboxes)
-- [ModRepo](https://modrepo.de/minecraft/shulkerbox/overview)
-- [GitHub](https://github.com/henkelmax/advanced-shulkerboxes)
-- [FAQ](https://modrepo.de/minecraft/shulkerbox/faq)
 - [Credits](https://modrepo.de/minecraft/shulkerbox/credits)
 
 ---
