@@ -1,7 +1,7 @@
 package de.maxhenkel.shulkerbox.gui;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import de.maxhenkel.corelib.inventory.ScreenBase;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -21,9 +21,9 @@ public class ShulkerboxScreen extends ScreenBase<ShulkerboxContainer> {
     }
 
     @Override
-    protected void renderLabels(PoseStack matrixStack, int x, int y) {
-        font.draw(matrixStack, getTitle(), 8F, 6F, FONT_COLOR);
-        font.draw(matrixStack, playerInventory.getDisplayName(), 8F, (float) (imageHeight - 96 + 4), FONT_COLOR);
+    protected void renderLabels(GuiGraphics guiGraphics, int x, int y) {
+        guiGraphics.drawString(font, getTitle().getVisualOrderText(), 8F, 6F, FONT_COLOR, false);
+        guiGraphics.drawString(font, playerInventory.getDisplayName().getVisualOrderText(), 8F, (float) (imageHeight - 96 + 4), FONT_COLOR, false);
     }
 
 }
