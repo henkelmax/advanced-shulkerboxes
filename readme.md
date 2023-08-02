@@ -1,8 +1,9 @@
 <!-- modrinth_exclude.start -->
 
-# Advanced Shulkerboxes ![](http://cf.way2muchnoise.eu/full_253861_downloads.svg) ![](http://cf.way2muchnoise.eu/versions/253861.svg)
+# Advanced Shulkerboxes
 
 ## Links
+- [Modrinth](https://modrinth.com/mod/advanced-shulkerboxes)
 - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/advanced-shulkerboxes)
 - [Credits](https://modrepo.de/minecraft/shulkerbox/credits)
 

@@ -8,8 +8,6 @@ version="${mod_version}"
 displayName="${mod_name}"
 updateJSONURL="https://maxhenkel.de/update/shulkerbox.json"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/advanced-shulkerboxes"
-# logoFile="shulkerbox.png"
-# credits=""
 authors="${mod_vendor}"
 description='''Open Shulkerboxes in your hand'''
 [[dependencies.${mod_id}]]
