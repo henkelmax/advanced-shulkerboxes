@@ -12,7 +12,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ShulkerBoxBlock;
-import net.minecraftforge.network.NetworkHooks;
 
 public class Utils {
 
@@ -51,8 +50,8 @@ public class Utils {
     }
 
     public static void openShulkerBox(Player player, ItemStack stack) {
-        if (!player.level().isClientSide && player instanceof ServerPlayer) {
-            NetworkHooks.openScreen((ServerPlayer) player, new MenuProvider() {
+        if (!player.level().isClientSide && player instanceof ServerPlayer serverPlayer) {
+            serverPlayer.openMenu(new MenuProvider() {
                 @Override
                 public AbstractContainerMenu createMenu(int id, Inventory playerInventory, Player playerEntity) {
                     return new ShulkerboxContainer(id, playerInventory, new AdvancedShulkerBoxInventory(player, stack));
