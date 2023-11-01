@@ -1,13 +1,13 @@
 package de.maxhenkel.shulkerbox;
 
 import de.maxhenkel.corelib.config.ConfigBase;
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class ServerConfig extends ConfigBase {
 
-    public final ForgeConfigSpec.BooleanValue onlySneakPlace;
+    public final ModConfigSpec.BooleanValue onlySneakPlace;
 
-    public ServerConfig(ForgeConfigSpec.Builder builder) {
+    public ServerConfig(ModConfigSpec.Builder builder) {
         super(builder);
         onlySneakPlace = builder
                 .comment("If the Shulker Box should only be placed when sneaking")
