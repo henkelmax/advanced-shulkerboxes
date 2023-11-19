@@ -4,6 +4,7 @@ import de.maxhenkel.corelib.ClientRegistry;
 import de.maxhenkel.corelib.CommonRegistry;
 import de.maxhenkel.shulkerbox.gui.ShulkerboxContainer;
 import de.maxhenkel.shulkerbox.gui.ShulkerboxScreen;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -13,18 +14,17 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.ForgeRegistries;
-import net.neoforged.neoforge.registries.RegistryObject;
 
 @Mod(Main.MODID)
 public class Main {
 
     public static final String MODID = "shulkerbox";
 
-    private static final DeferredRegister<MenuType<?>> MENU_TYPE_REGISTER = DeferredRegister.create(ForgeRegistries.MENU_TYPES, Main.MODID);
+    private static final DeferredRegister<MenuType<?>> MENU_TYPE_REGISTER = DeferredRegister.create(BuiltInRegistries.MENU, Main.MODID);
 
-    public static final RegistryObject<MenuType<ShulkerboxContainer>> SHULKERBOX_CONTAINER = MENU_TYPE_REGISTER.register("shulkerbox", () ->
+    public static final DeferredHolder<MenuType<?>, MenuType<ShulkerboxContainer>> SHULKERBOX_CONTAINER = MENU_TYPE_REGISTER.register("shulkerbox", () ->
             IMenuTypeExtension.create((windowId, inv, data) -> new ShulkerboxContainer(windowId, inv))
     );
     public static ServerConfig SERVER_CONFIG;
