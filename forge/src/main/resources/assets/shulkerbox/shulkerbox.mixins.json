@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8.4",
+  "package": "de.maxhenkel.shulkerbox.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "shulkerbox.refmap.json",
+  "mixins": [
+    "BlockItemMixin",
+    "ItemMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

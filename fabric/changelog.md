@@ -1,0 +1,2 @@
+- Added multi loader support
+- Added mod icon

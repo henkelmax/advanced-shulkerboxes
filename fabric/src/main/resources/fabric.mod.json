@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
+  "description": "Open Shulker Boxes in your hand",
+  "authors": [
+    "${mod_vendor}"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/advanced-shulkerboxes",
+    "issues": "https://github.com/henkelmax/advanced-shulkerboxes/issues",
+    "sources": "https://github.com/henkelmax/advanced-shulkerboxes",
+    "email": "info@modrepo.de"
+  },
+  "license": "All Rights Reserved",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "de.maxhenkel.shulkerbox.FabricAdvancedShulkerboxesMod"
+    ]
+  },
+  "mixins": [
+    "shulkerbox.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "minecraft": "${minecraft_dependency}",
+    "java": ">=${java_version}"
+  }
+}
