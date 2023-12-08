@@ -1,2 +1,1 @@
-- Added multi loader support
-- Added mod icon
+- Updated to 1.20.4
