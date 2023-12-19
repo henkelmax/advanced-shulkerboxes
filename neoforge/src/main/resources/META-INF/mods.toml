@@ -1,23 +1,23 @@
 modLoader="javafml"
-loaderVersion="${loader_version}"
+loaderVersion="*"
 license="All rights reserved"
 issueTrackerURL="https://github.com/henkelmax/advanced-shulkerboxes/issues"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/advanced-shulkerboxes"
 logoFile="icon.png"
-authors="${mod_vendor}"
+authors="Max Henkel"
 [[mods]]
-modId="${mod_id}"
+modId="shulkerbox"
 version="${mod_version}"
-displayName="${mod_name}"
+displayName="Advanced Shulkerboxes"
 updateJSONURL="https://update.maxhenkel.de/neoforge/shulkerbox"
 description='''Open Shulker Boxes in your hand'''
-[[dependencies.${mod_id}]]
+[[dependencies.shulkerbox]]
     modId="neoforge"
     mandatory=true
-    versionRange="${neoforge_version_range}"
+    versionRange="${neoforge_dependency}"
     ordering="NONE"
     side="BOTH"
-[[dependencies.${mod_id}]]
+[[dependencies.shulkerbox]]
     modId="minecraft"
     mandatory=true
     versionRange="[${minecraft_version}]"

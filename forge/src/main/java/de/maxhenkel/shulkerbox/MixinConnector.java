@@ -7,7 +7,7 @@ public class MixinConnector implements IMixinConnector {
 
     @Override
     public void connect() {
-        Mixins.addConfiguration("assets/%s/%s.mixins.json".formatted(AdvancedShulkerboxesMod.MODID, AdvancedShulkerboxesMod.MODID));
+        Mixins.addConfiguration("%s.mixins.json".formatted(AdvancedShulkerboxesMod.MODID));
     }
 
 }
