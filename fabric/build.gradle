@@ -4,7 +4,7 @@ apply plugin: 'com.matthewprenger.cursegradle'
 apply plugin: 'com.modrinth.minotaur'
 apply plugin: 'mod-update'
 
-apply from: mod_gradle_script
+apply from: "https://raw.githubusercontent.com/henkelmax/mod-gradle-scripts/${mod_gradle_script_version}/mod.gradle"
 
 processResources {
     filesMatching('fabric.mod.json') {
