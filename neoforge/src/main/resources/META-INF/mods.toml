@@ -1,25 +1,25 @@
-modLoader="javafml"
-loaderVersion="*"
-license="All rights reserved"
-issueTrackerURL="https://github.com/henkelmax/advanced-shulkerboxes/issues"
-displayURL="https://www.curseforge.com/minecraft/mc-mods/advanced-shulkerboxes"
-logoFile="icon.png"
-authors="Max Henkel"
+modLoader = "javafml"
+loaderVersion = "*"
+license = "All rights reserved"
+issueTrackerURL = "https://github.com/henkelmax/advanced-shulkerboxes/issues"
 [[mods]]
-modId="shulkerbox"
-version="${mod_version}"
-displayName="Advanced Shulkerboxes"
-updateJSONURL="https://update.maxhenkel.de/neoforge/shulkerbox"
-description='''Open Shulker Boxes in your hand'''
+modId = "shulkerbox"
+version = "${mod_version}"
+displayName = "Advanced Shulkerboxes"
+updateJSONURL = "https://update.maxhenkel.de/neoforge/shulkerbox"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/advanced-shulkerboxes"
+logoFile = "icon.png"
+authors = "Max Henkel"
+description = '''Open Shulker Boxes in your hand'''
 [[dependencies.shulkerbox]]
-    modId="neoforge"
-    mandatory=true
-    versionRange="${neoforge_dependency}"
-    ordering="NONE"
-    side="BOTH"
+modId = "neoforge"
+mandatory = true
+versionRange = "${neoforge_dependency}"
+ordering = "NONE"
+side = "BOTH"
 [[dependencies.shulkerbox]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[${minecraft_version}]"
-    ordering="NONE"
-    side="BOTH"
+modId = "minecraft"
+mandatory = true
+versionRange = "[${minecraft_version}]"
+ordering = "NONE"
+side = "BOTH"
