@@ -1,1 +1,1 @@
-- Updated dependencies
+- Updated NeoForge
