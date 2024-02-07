@@ -13,13 +13,13 @@ authors = "Max Henkel"
 description = '''Open Shulker Boxes in your hand'''
 [[dependencies.shulkerbox]]
 modId = "forge"
-type = "required"
+mandatory = true
 versionRange = "${forge_dependency}"
 ordering = "NONE"
 side = "BOTH"
 [[dependencies.shulkerbox]]
 modId = "minecraft"
-type = "required"
+mandatory = true
 versionRange = "[${minecraft_version}]"
 ordering = "NONE"
 side = "BOTH"
