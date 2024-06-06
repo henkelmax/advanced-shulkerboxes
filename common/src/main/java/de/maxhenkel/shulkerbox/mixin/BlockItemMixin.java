@@ -31,6 +31,9 @@ public abstract class BlockItemMixin {
         if (context.getPlayer().isShiftKeyDown()) {
             return;
         }
+        if (context.getItemInHand().getCount() != 1) {
+            return;
+        }
 
         if (context.getPlayer() instanceof ServerPlayer serverPlayer) {
             AdvancedShulkerboxMenu.open(serverPlayer, context.getItemInHand());

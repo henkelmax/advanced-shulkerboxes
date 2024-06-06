@@ -28,6 +28,11 @@ public class ItemMixin {
         }
         //TODO Check for fake players
         ItemStack itemInHand = player.getItemInHand(interactionHand);
+
+        if (itemInHand.getCount() != 1) {
+            return;
+        }
+
         if (player instanceof ServerPlayer serverPlayer) {
             AdvancedShulkerboxMenu.open(serverPlayer, itemInHand);
         }
