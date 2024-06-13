@@ -1,1 +1,1 @@
-- Fixed overstacked shulkers being able to be opened
+- Update to 1.21
