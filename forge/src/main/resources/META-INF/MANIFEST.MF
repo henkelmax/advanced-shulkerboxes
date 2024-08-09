@@ -1,1 +1,1 @@
-MixinConnector: de.maxhenkel.shulkerbox.MixinConnector
+MixinConfigs: shulkerbox.mixins.json
