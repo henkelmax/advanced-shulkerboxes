@@ -1,1 +1,1 @@
-- Fixed jar being reobfuscated
+- Updated to 1.21.1
