@@ -7,8 +7,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(AdvancedShulkerboxesMod.MODID)
 public class ForgeAdvancedShulkerboxesMod extends AdvancedShulkerboxesMod {
 
-    public ForgeAdvancedShulkerboxesMod() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
+    public ForgeAdvancedShulkerboxesMod(FMLJavaModLoadingContext context) {
+        context.getModEventBus().addListener(this::commonSetup);
     }
 
     public void commonSetup(FMLCommonSetupEvent event) {
