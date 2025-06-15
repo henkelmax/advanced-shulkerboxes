@@ -50,7 +50,7 @@ public class AdvancedShulkerboxContainer implements Container {
         if (player == null) {
             return;
         }
-        LootTable loottable = player.server.reloadableRegistries().getLootTable(loot.lootTable());
+        LootTable loottable = player.getServer().reloadableRegistries().getLootTable(loot.lootTable());
 
         LootParams.Builder builder = new LootParams.Builder((ServerLevel) player.level());
         builder.withLuck(player.getLuck()).withParameter(LootContextParams.THIS_ENTITY, player);
