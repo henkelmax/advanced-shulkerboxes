@@ -9,6 +9,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.entity.ContainerUser;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemContainerContents;
@@ -50,7 +52,7 @@ public class AdvancedShulkerboxContainer implements Container {
         if (player == null) {
             return;
         }
-        LootTable loottable = player.getServer().reloadableRegistries().getLootTable(loot.lootTable());
+        LootTable loottable = player.level().getServer().reloadableRegistries().getLootTable(loot.lootTable());
 
         LootParams.Builder builder = new LootParams.Builder((ServerLevel) player.level());
         builder.withLuck(player.getLuck()).withParameter(LootContextParams.THIS_ENTITY, player);
@@ -100,14 +102,16 @@ public class AdvancedShulkerboxContainer implements Container {
     }
 
     @Override
-    public void startOpen(Player player) {
-        player.level().playSound(null, player.getX(), player.getY(), player.getZ(), getOpenSound(), SoundSource.BLOCKS, 0.5F, getVariatedPitch(player.level()));
+    public void startOpen(ContainerUser containerUser) {
+        LivingEntity e = containerUser.getLivingEntity();
+        e.level().playSound(null, e.getX(), e.getY(), e.getZ(), getOpenSound(), SoundSource.BLOCKS, 0.5F, getVariatedPitch(e.level()));
     }
 
     @Override
-    public void stopOpen(Player player) {
+    public void stopOpen(ContainerUser containerUser) {
         setChanged();
-        player.level().playSound(null, player.getX(), player.getY(), player.getZ(), getCloseSound(), SoundSource.BLOCKS, 0.5F, getVariatedPitch(player.level()));
+        LivingEntity e = containerUser.getLivingEntity();
+        e.level().playSound(null, e.getX(), e.getY(), e.getZ(), getCloseSound(), SoundSource.BLOCKS, 0.5F, getVariatedPitch(e.level()));
     }
 
     protected static float getVariatedPitch(Level world) {
