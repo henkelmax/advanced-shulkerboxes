@@ -11,6 +11,8 @@ displayURL = "https://www.curseforge.com/minecraft/mc-mods/advanced-shulkerboxes
 logoFile = "icon.png"
 authors = "Max Henkel"
 description = '''Open Shulker Boxes in your hand'''
+[[mixins]]
+config = "shulkerbox.mixins.json"
 [[dependencies.shulkerbox]]
 modId = "neoforge"
 type = "required"
