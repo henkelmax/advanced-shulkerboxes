@@ -20,9 +20,9 @@ public class AdvancedShulkerboxMenu extends ShulkerBoxMenu {
     }
 
     @Override
-    public void clicked(int slot, int mouseButton, ClickType clickType, Player player) {
+    public void clicked(int slot, int mouseButton, ContainerInput containerInput, Player player) {
         if (slot < 0 || slot >= slots.size()) {
-            super.clicked(slot, mouseButton, clickType, player);
+            super.clicked(slot, mouseButton, containerInput, player);
             return;
         }
         ItemStack stack = slots.get(slot).getItem();
@@ -30,7 +30,7 @@ public class AdvancedShulkerboxMenu extends ShulkerBoxMenu {
         if (stack == shulkerBox) {
             return;
         }
-        super.clicked(slot, mouseButton, clickType, player);
+        super.clicked(slot, mouseButton, containerInput, player);
     }
 
     public static void open(ServerPlayer player, ItemStack shulkerBox) {

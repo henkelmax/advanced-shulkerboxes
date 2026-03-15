@@ -115,7 +115,7 @@ public class AdvancedShulkerboxContainer implements Container {
     }
 
     protected static float getVariatedPitch(Level world) {
-        return world.random.nextFloat() * 0.1F + 0.9F;
+        return world.getRandom().nextFloat() * 0.1F + 0.9F;
     }
 
     protected SoundEvent getOpenSound() {
