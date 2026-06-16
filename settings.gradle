@@ -10,4 +10,4 @@ pluginManagement {
 }
 
 rootProject.name = 'advanced-shulkerboxes'
-include('common', 'fabric', 'neoforge', 'forge')
+include('common', 'fabric', 'neoforge'/*, 'forge'*/)
